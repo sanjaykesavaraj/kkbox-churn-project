@@ -1,0 +1,27 @@
+cohort,signal,band,customers,churners,churn_rate
+train,"Auto-renew transactions, last 3 months",0,112648,37356.0,0.33161707265109014
+train,"Auto-renew transactions, last 3 months",1,28057,1896.0,0.06757671882239727
+train,"Auto-renew transactions, last 3 months",2+,852226,24219.0,0.028418518092618625
+train_v2,"Auto-renew transactions, last 3 months",0,115259,48880.0,0.4240883575252258
+train_v2,"Auto-renew transactions, last 3 months",1,29033,2273.0,0.07829022147211794
+train_v2,"Auto-renew transactions, last 3 months",2+,826668,36177.0,0.04376242941543643
+train,"Cancellation transactions, last 3 months",0,953540,55356.0,0.05805314931728087
+train,"Cancellation transactions, last 3 months",1+,39391,8115.0,0.2060115254753624
+train_v2,"Cancellation transactions, last 3 months",0,931035,78242.0,0.08403765701611647
+train_v2,"Cancellation transactions, last 3 months",1+,39925,9088.0,0.22762680025046964
+train,"Listening activity, last month",Listening logs last month,776319,49802.0,0.06415146350920176
+train,"Listening activity, last month",No listening logs last month,216612,13669.0,0.06310361383487526
+train_v2,"Listening activity, last month",Listening logs last month,755820,71352.0,0.09440342938794952
+train_v2,"Listening activity, last month",No listening logs last month,215140,15978.0,0.07426791856465557
+train,"Listening seconds, last 3 months",Listening seconds last 3 months,808121,52009.0,0.06435793649713348
+train,"Listening seconds, last 3 months",No listening seconds last 3 months,184810,11462.0,0.06202045343866674
+train_v2,"Listening seconds, last 3 months",Listening seconds last 3 months,793729,74501.0,0.09386201083745208
+train_v2,"Listening seconds, last 3 months",No listening seconds last 3 months,177231,12829.0,0.0723857564421574
+train,"Payment recorded, last 3 months",No recorded payment last 3 months,27140,13669.0,0.5036477523949889
+train,"Payment recorded, last 3 months",Payment recorded last 3 months,965791,49802.0,0.05156602204824853
+train_v2,"Payment recorded, last 3 months",No recorded payment last 3 months,25997,20886.0,0.8034003923529638
+train_v2,"Payment recorded, last 3 months",Payment recorded last 3 months,944963,66444.0,0.07031386414071239
+train,"Transaction activity, last month",No transaction last month,31444,15269.0,0.48559343594962473
+train,"Transaction activity, last month",Transaction last month,961487,48202.0,0.050132763105481405
+train_v2,"Transaction activity, last month",No transaction last month,41536,27337.0,0.6581519645608629
+train_v2,"Transaction activity, last month",Transaction last month,929424,59993.0,0.06454858062628037

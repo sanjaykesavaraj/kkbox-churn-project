@@ -1,0 +1,42 @@
+# Raw KKBox source files (large and subject to source-dataset terms)
+/members_v3.csv
+/train.csv
+/train_v2.csv
+/transactions.csv
+/transactions_v2.csv
+/user_logs.csv
+/user_logs_v2.csv
+/sample_submission_v2.csv
+
+# Local processed customer-level data and temporary processing files
+/kkbox_processed/**/*.parquet
+/kkbox_processed/**/duckdb_temp/
+/kkbox_processed/**/log_parts/
+/kkbox_processed/**/seconds_parts/
+/kkbox_processed/**/batch_demo/
+
+# Customer-level scores and outreach lists: never publish these
+/kkbox_processed/**/*customer_risk_scores*
+/kkbox_processed/**/*outreach_queue*
+/kkbox_processed/**/*scored_for_evaluation*
+
+# Large serialized model bundles can be shared separately if approved
+/deployment_bundle_v1/
+/deployment_bundle_v1.zip
+
+# Python and local environment files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+
+# OS/editor clutter
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Generated local data, models, and intermediate results
+/kkbox_processed/
