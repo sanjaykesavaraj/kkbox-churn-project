@@ -14,17 +14,17 @@ A time-aware churn-classification and retention-prioritization project using the
 
 ## Data and target
 
-Inputs expected in `C:\\project`:
+Inputs expected in `C:\\\\project`:
 
 * `train.csv` — earlier labeled cohort, 992,931 customers.
-* `train\_v2.csv` — later labeled cohort, 970,960 customers.
+* `train\\\_v2.csv` — later labeled cohort, 970,960 customers.
 * `transactions.csv` — transaction history through February 2017.
-* `transactions\_v2.csv` — refreshed transaction records through March 2017.
-* `user\_logs.csv` — daily listening history January 2015–February 2017.
-* `user\_logs\_v2.csv` — March 2017 listening activity.
-* `members\_v3.csv` — member attributes.
+* `transactions\\\_v2.csv` — refreshed transaction records through March 2017.
+* `user\\\_logs.csv` — daily listening history January 2015–February 2017.
+* `user\\\_logs\\\_v2.csv` — March 2017 listening activity.
+* `members\\\_v3.csv` — member attributes.
 
-The target is `is\_churn`. For this project the earlier cohort is used for model development and the later cohort is treated as an out-of-time evaluation cohort. The feature cutoff is the first day of the target expiry month: earlier-cohort features use data through January 2017; later-cohort features use data through February 2017. Target-month information is excluded from features.
+The target is `is\\\_churn`. For this project the earlier cohort is used for model development and the later cohort is treated as an out-of-time evaluation cohort. The feature cutoff is the first day of the target expiry month: earlier-cohort features use data through January 2017; later-cohort features use data through February 2017. Target-month information is excluded from features.
 
 ## Environment
 
@@ -36,13 +36,13 @@ python -m pip install pandas pyarrow duckdb scikit-learn matplotlib joblib
 
 ## Processing and analysis sequence
 
-Run the local scripts from `C:\\project`. Scripts and raw files should remain outside the generated output folder; raw source files are never overwritten.
+Run the local scripts from `C:\\\\project`. Scripts and raw files should remain outside the generated output folder; raw source files are never overwritten.
 
 1. Inspect input names, sizes, headers, and sample rows.
 2. Audit row counts and date coverage for each dataset.
 3. Chunk-read daily listening logs, filter to the union of labeled customer IDs, aggregate by `msno` and month, and save Parquet.
 4. Validate month coverage and customer-month uniqueness.
-5. Inspect raw `total\_secs` anomalies; rebuild only that feature using the documented daily cleaning rule: negative/non-finite values set to zero and daily values capped at 86,400 seconds.
+5. Inspect raw `total\\\_secs` anomalies; rebuild only that feature using the documented daily cleaning rule: negative/non-finite values set to zero and daily values capped at 86,400 seconds.
 6. Audit expiry-date matches across both transaction files.
 7. Deduplicate exact transaction rows, produce monthly transaction summaries, and create cohort expiry anchors.
 8. Build one point-in-time row per customer per labeled cohort, joining prior-window listening, transaction, and member features.
@@ -53,18 +53,18 @@ Run the local scripts from `C:\\project`. Scripts and raw files should remain ou
 
 ### Main processed files
 
-* `kkbox\_processed/logs\_monthly.parquet` — initial monthly listening aggregates; contains uncleaned `total\_secs` and is retained for audit.
-* `kkbox\_processed/logs\_monthly\_clean.parquet` — monthly listening features with cleaned seconds.
-* `kkbox\_processed/transactions\_monthly.parquet` — customer-month transaction summaries.
-* `kkbox\_processed/cohort\_anchors.parquet` — labels and target expiry anchors by cohort/customer.
-* `kkbox\_processed/snapshot\_features.parquet` — model-ready point-in-time cohort snapshots.
+* `kkbox\\\_processed/logs\\\_monthly.parquet` — initial monthly listening aggregates; contains uncleaned `total\\\_secs` and is retained for audit.
+* `kkbox\\\_processed/logs\\\_monthly\\\_clean.parquet` — monthly listening features with cleaned seconds.
+* `kkbox\\\_processed/transactions\\\_monthly.parquet` — customer-month transaction summaries.
+* `kkbox\\\_processed/cohort\\\_anchors.parquet` — labels and target expiry anchors by cohort/customer.
+* `kkbox\\\_processed/snapshot\\\_features.parquet` — model-ready point-in-time cohort snapshots.
 
 ### Model and analysis outputs
 
-* `kkbox\_processed/baseline\_results/` — baseline estimator, metrics, lift tables, and PR curves.
-* `kkbox\_processed/boosted\_results/` — boosted estimator, metrics, lift tables, permutation importance, retention-signal rates, calibration outputs, and later-cohort queue.
-* `kkbox\_processed/model\_comparison/` — model comparisons and charts.
-* `top\_decile\_outreach\_queue.csv` excludes the churn label; labeled evaluation scores are stored separately for analysis only.
+* `kkbox\\\_processed/baseline\\\_results/` — baseline estimator, metrics, lift tables, and PR curves.
+* `kkbox\\\_processed/boosted\\\_results/` — boosted estimator, metrics, lift tables, permutation importance, retention-signal rates, calibration outputs, and later-cohort queue.
+* `kkbox\\\_processed/model\\\_comparison/` — model comparisons and charts.
+* `top\\\_decile\\\_outreach\\\_queue.csv` excludes the churn label; labeled evaluation scores are stored separately for analysis only.
 
 ## Model results
 
@@ -138,7 +138,21 @@ Initial actions to test:
 * Other high-risk customers: customer-success or product-adoption check-in based on available context.
 * Lower-risk bands: standard lifecycle communication, without default incentives.
 
-The companion `KKBox\_Retention\_Playbook.md` and `KKBox\_Retention\_Experiment\_Plan.md` document the operational recommendations and proposed randomized evaluation.
+The companion `KKBox\\\_Retention\\\_Playbook.md` and `KKBox\\\_Retention\\\_Experiment\\\_Plan.md` document the operational recommendations and proposed randomized evaluation.
+
+
+
+### Interactive demo
+
+
+
+The local Streamlit demo uses synthetic profiles and the historical KKBox model.
+
+It is not hosted and must not be used for real customer outreach.
+
+!\[KKBox churn demo using a synthetic profile](reports/demo-app.png)
+
+
 
 ## Important limitations
 
